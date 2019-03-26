@@ -1,120 +1,120 @@
 @font-face {
-  font-family: Helsingin;
-  src: url(https://www.vaalikone.fi/eduskunta2019/assets/fonts/a20fc9ded897159fb15f038a917a233f-helsingin-text-web-regular.woff)
-      format("woff");
-  font-weight: 400;
-  font-style: normal;
+    font-family: Helsingin;
+    src: url(https://www.vaalikone.fi/eduskunta2019/assets/fonts/a20fc9ded897159fb15f038a917a233f-helsingin-text-web-regular.woff)
+        format("woff");
+    font-weight: 400;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: Helsingin;
-  src: url(https://www.vaalikone.fi/eduskunta2019/assets/fonts/2cec1bebcc375464fb4ea3850fbc713b-helsingin-text-web-bold.woff)
-      format("woff");
-  font-weight: 700;
-  font-style: normal;
+    font-family: Helsingin;
+    src: url(https://www.vaalikone.fi/eduskunta2019/assets/fonts/2cec1bebcc375464fb4ea3850fbc713b-helsingin-text-web-bold.woff)
+        format("woff");
+    font-weight: 700;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: SanomatSlab;
-  src: url(https://www.vaalikone.fi/eduskunta2019/assets/fonts/56a043fb415e97393ab53b09803ee82c-sanomat-slab-web-bold.woff)
-      format("woff");
-  font-weight: 700;
-  font-style: normal;
+    font-family: SanomatSlab;
+    src: url(https://www.vaalikone.fi/eduskunta2019/assets/fonts/56a043fb415e97393ab53b09803ee82c-sanomat-slab-web-bold.woff)
+        format("woff");
+    font-weight: 700;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: Sanomat;
-  src: url(https://www.vaalikone.fi/eduskunta2019/assets/fonts/234c2cc78975ea90ebc587569af66c41-sanomat-web-bold.woff)
-      format("woff");
-  font-weight: 700;
-  font-style: normal;
+    font-family: Sanomat;
+    src: url(https://www.vaalikone.fi/eduskunta2019/assets/fonts/234c2cc78975ea90ebc587569af66c41-sanomat-web-bold.woff)
+        format("woff");
+    font-weight: 700;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: BentonSansComp-Bold;
-  src: url(https://www.vaalikone.fi/eduskunta2019/assets/fonts/2c0e1e3f3744c5298e20468794f4e7e9-BentonSansComp-Bold.woff);
-  src: url(https://www.vaalikone.fi/eduskunta2019/assets/fonts/2c0e1e3f3744c5298e20468794f4e7e9-BentonSansComp-Bold.woff)
-      format("woff");
-  font-weight: 400;
-  font-style: normal;
+    font-family: BentonSansComp-Bold;
+    src: url(https://www.vaalikone.fi/eduskunta2019/assets/fonts/2c0e1e3f3744c5298e20468794f4e7e9-BentonSansComp-Bold.woff);
+    src: url(https://www.vaalikone.fi/eduskunta2019/assets/fonts/2c0e1e3f3744c5298e20468794f4e7e9-BentonSansComp-Bold.woff)
+        format("woff");
+    font-weight: 400;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: 400;
-  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-      url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lujVj9_mf.woff2)
-          format("woff2");
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: 400;
+    src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+        url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lujVj9_mf.woff2)
+            format("woff2");
 }
 
 @font-face {
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: 400;
-  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-      url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lujVj9_mf.woff2)
-          format("woff2");
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: 400;
+    src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+        url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lujVj9_mf.woff2)
+            format("woff2");
 }
 
 @font-face {
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: 400;
-  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-      url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lujVj9_mf.woff2)
-          format("woff2");
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: 400;
+    src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+        url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lujVj9_mf.woff2)
+            format("woff2");
 }
 
 @font-face {
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: 400;
-  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-      url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lujVj9_mf.woff2)
-          format("woff2");
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: 400;
+    src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+        url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lujVj9_mf.woff2)
+            format("woff2");
 }
 
 @font-face {
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: 400;
-  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-      url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lujVj9_mf.woff2)
-          format("woff2");
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: 400;
+    src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+        url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lujVj9_mf.woff2)
+            format("woff2");
 }
 
 @font-face {
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: 400;
-  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-      url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lujVj9_mf.woff2)
-          format("woff2");
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: 400;
+    src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+        url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lujVj9_mf.woff2)
+            format("woff2");
 }
 
 @font-face {
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: 400;
-  src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-      url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2)
-          format("woff2");
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: 400;
+    src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+        url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2)
+            format("woff2");
 }
 
 body {
-  margin: 0;
-  width: 100vw;
-  padding: 0;
-  font-family: "Times New Roman";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  min-height: 500px;
-  overflow-x: hidden;
-  background-color: rgb(233, 234, 237);
+    margin: 0;
+    width: 100vw;
+    padding: 0;
+    font-family: "Times New Roman";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 500px;
+    overflow-x: hidden;
+    background-color: rgb(233, 234, 237);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-      monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }
