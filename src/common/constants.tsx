@@ -1,10 +1,10 @@
-export const ActionType = {
-    SetStartedState: "SET_STARTEDSTATE",
-    SetCity: "SET_CITY"
+export enum ActionType {
+    SetStartedState,
+    SetCity
 };
 
-export const StartedState = {
-    No: "no",
-    Started: "started",
-    Ended: "ended"
+export enum StartedState {
+    No,
+    Started,
+    Ended
 };

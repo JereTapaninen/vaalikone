@@ -1,13 +1,14 @@
 import {
-    ActionType
+    ActionType,
+    StartedState
 } from "./constants";
 
 export interface Action {
-    type: string,
+    type: ActionType,
     payload: any
 }
 
-export const actionSetStartedState = (payload: string): Action => ({
+export const actionSetStartedState = (payload: StartedState): Action => ({
     type: ActionType.SetStartedState,
     payload
 });

@@ -6,11 +6,16 @@ import "normalize.css";
 import "./index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
-import store from "./common/store";
+import configureStore, {history} from "./common/store";
+import {ConnectedRouter} from "connected-react-router";
+
+const store = configureStore({});
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <ConnectedRouter history={history}>
+            <App />
+        </ConnectedRouter>
     </Provider>,
     document.getElementById("root")
 );

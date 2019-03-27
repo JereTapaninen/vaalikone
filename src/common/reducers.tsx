@@ -5,6 +5,8 @@ import {
 import {
     Action
 } from "./actions";
+import {combineReducers} from "redux";
+import {connectRouter} from "connected-react-router";
 
 const initialState = {
     startedState: StartedState.No,
@@ -28,4 +30,7 @@ function rootReducer(state = initialState, action: Action) {
         state;
 };
 
-export default rootReducer;
+export default (history: any) => combineReducers({
+    router: connectRouter(history),
+    rootReducer
+});
