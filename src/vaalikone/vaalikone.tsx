@@ -5,13 +5,13 @@ import "./vaalikone.scss";
 import questionsJSON from "../questions.json";
 
 interface VaalikoneProps {
-    endVaalikone: () => any
+    endVaalikone: () => void
 };
 
 const Vaalikone = (props: VaalikoneProps) => {
-    const [questions, setQuestions]: [string[], (arg: string[]) => any] = useState(questionsJSON);
-    const [currentQuestionId, setCurrentQuestionId]: [number, (arg: number) => any] = useState(0);
-    const [currentQuestion, setCurrentQuestion]: [string, (arg: string) => any] = useState(questions[0]);
+    const [questions, setQuestions]: [string[], (arg: string[]) => void] = useState(questionsJSON);
+    const [currentQuestionId, setCurrentQuestionId]: [number, (arg: number) => void] = useState(0);
+    const [currentQuestion, setCurrentQuestion]: [string, (arg: string) => void] = useState(questions[0]);
 
     const goToNextQuestion = () => {
         const nextQuestionId = currentQuestionId + 1;

@@ -3,11 +3,10 @@ import React, { useState } from "react";
 import "./App.scss";
 import Main from "./main/main";
 import Vaalikone from "./vaalikone/vaalikone";
-// @ts-ignore
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 
 const App = () => {
-    const [city, setCity]: [string, (arg: string) => any] = useState("");
+    const [city, setCity]: [string, (arg: string) => void] = useState("");
     const [startedState, setStartedState]: [
     string,
     (arg: string) => any

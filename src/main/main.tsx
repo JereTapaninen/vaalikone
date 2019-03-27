@@ -20,8 +20,8 @@ const Main = (props: MainProps) => {
 
     const filteredCities = removeDuplicates(cityNames).sort();
 
-    const [cities, setCities]: [string[], (arg: string[]) => any] = useState(filteredCities);
-    const [currentCity, setCurrentCity]: [string, (arg: string) => any] = useState("");
+    const [cities, setCities]: [string[], (arg: string[]) => void] = useState(filteredCities);
+    const [currentCity, setCurrentCity]: [string, (arg: string) => void] = useState("");
 
     const onChange = (event: any) => {
         setCurrentCity(event.target.value);
