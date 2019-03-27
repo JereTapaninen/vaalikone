@@ -3,16 +3,18 @@ import React, {useState} from "react";
 import "./main.css";
 // @ts-ignore
 import citiesJSON from "cities.json";
+// @ts-ignore
+import {connect} from "react-redux";
+import {StartedState} from "../../common/constants";
+import {actionSetStartedState} from "../../common/actions";
+import {MainProps} from "../../common/types";
 
 const removeDuplicates = (values: string[]) =>
     // @ts-ignore
     [...new Set(values)];
 
-interface MainProps {
-    startVaalikone: (arg: string) => any
-}
-
 const Main = (props: MainProps) => {
+    const {setStartedState} = props;
     // @ts-ignore
     const cityNames: string[] = citiesJSON
         .filter((cityInfo: {country: string}) => cityInfo.country === "FI")
@@ -28,7 +30,7 @@ const Main = (props: MainProps) => {
     };
 
     const begin = () => {
-        props.startVaalikone(currentCity);
+        setStartedState(StartedState.Started)
     };
 
     return (
@@ -72,4 +74,8 @@ const Main = (props: MainProps) => {
     );
 };
 
-export default Main;
+const mapDispatchToProps = (dispatch: any): MainProps => ({
+    setStartedState: (startedState: string) => dispatch(actionSetStartedState(startedState))
+});
+
+export default connect(null, mapDispatchToProps)(Main);

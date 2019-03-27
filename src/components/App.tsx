@@ -4,17 +4,28 @@ import "./App.scss";
 import Main from "./main/main";
 import Vaalikone from "./vaalikone/vaalikone";
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+// @ts-ignore
+import {connect} from "react-redux";
+import {
+    actionSetStartedState,
+    actionSetCity
+} from "../common/actions";
+import {StartedState} from "../common/constants";
+import {
+    AppStateProps,
+    AppDispatchProps,
+    AppProps
+} from "../common/types";
 
-const App = () => {
-    const [city, setCity]: [string, (arg: string) => void] = useState("");
-    const [startedState, setStartedState]: [
-    string,
-    (arg: string) => any
-    ] = useState("no");
+const App = (props: AppProps) => {
+    const {
+        startedState, setStartedState,
+        city, setCity
+    } = props;
 
     const startVaalikone = (city: string) => {
         setCity(city);
-        setStartedState("started");
+        setStartedState(StartedState.Started);
     };
 
     const mainRoute = (
@@ -54,4 +65,14 @@ const App = () => {
     );
 };
 
-export default App;
+const mapStateToProps = (state: any): AppStateProps => ({
+    startedState: state.startedState,
+    city: state.city
+});
+
+const mapDispatchToProps = (dispatch: any): AppDispatchProps => ({
+    setStartedState: (startedState: string) => dispatch(actionSetStartedState(startedState)),
+    setCity: (city: string) => dispatch(actionSetCity(city))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

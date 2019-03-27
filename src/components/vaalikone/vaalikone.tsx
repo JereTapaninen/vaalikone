@@ -2,13 +2,15 @@
 import React, {useState} from "react";
 import "./vaalikone.scss";
 // @ts-ignore
-import questionsJSON from "../questions.json";
-
-interface VaalikoneProps {
-    endVaalikone: () => void
-};
+import questionsJSON from "../../questions.json";
+// @ts-ignore
+import {connect} from "react-redux";
+import {StartedState} from "../../common/constants";
+import {actionSetStartedState} from "../../common/actions";
+import {VaalikoneProps} from "../../common/types";
 
 const Vaalikone = (props: VaalikoneProps) => {
+    const {setStartedState} = props;
     const [questions, setQuestions]: [string[], (arg: string[]) => void] = useState(questionsJSON);
     const [currentQuestionId, setCurrentQuestionId]: [number, (arg: number) => void] = useState(0);
     const [currentQuestion, setCurrentQuestion]: [string, (arg: string) => void] = useState(questions[0]);
@@ -17,7 +19,8 @@ const Vaalikone = (props: VaalikoneProps) => {
         const nextQuestionId = currentQuestionId + 1;
 
         if (nextQuestionId >= questions.length) {
-            props.endVaalikone();
+            setStartedState(StartedState.Ended);
+
             return;
         }
 
@@ -141,4 +144,8 @@ const Vaalikone = (props: VaalikoneProps) => {
     );
 };
 
-export default Vaalikone;
+const mapDispatchToProps = (dispatch: any) => ({
+    setStartedState: (startedState: string) => dispatch(actionSetStartedState(startedState))
+});
+
+export default connect(null, mapDispatchToProps)(Vaalikone);
