@@ -1,19 +1,32 @@
-export interface AppStateProps {
-    startedState: string
-    city: string
-}
-
-export interface AppDispatchProps {
-    setStartedState: (arg: string) => void,
-    setCity: (city: string) => void
-}
-
-export type AppProps = AppStateProps & AppDispatchProps;
+import {
+    StartedState
+} from "./constants";
 
 export interface MainProps {
-    setStartedState: (arg: string) => void
+    navigate: (arg: string, arg2: object) => void
 }
 
-export interface VaalikoneProps {
-    setStartedState: (arg: string) => void
+export interface VaalikoneDispatchProps {
+    navigate: (arg: string, arg2: object) => void
+}
+
+export type VaalikoneProps = VaalikoneDispatchProps & {
+    location: {
+        state: object
+    }
+};
+
+export interface ResultsDispatchProps {
+    navigate: (arg: string, arg2: object) => void
+}
+
+export type ResultsProps = ResultsDispatchProps & {
+    location: {
+        state: object
+    }
+};
+
+export interface SelectionButtonProps {
+    optionId: number,
+    selectOption: (arg: number) => void
 }

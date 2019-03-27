@@ -5,16 +5,14 @@ import "./main.css";
 import citiesJSON from "cities.json";
 // @ts-ignore
 import {connect} from "react-redux";
-import {StartedState} from "../../common/constants";
+import {ActionType, StartedState} from "../../common/constants";
 import {actionSetStartedState} from "../../common/actions";
 import {MainProps} from "../../common/types";
-
-const removeDuplicates = (values: string[]) =>
-    // @ts-ignore
-    [...new Set(values)];
+import {push} from "connected-react-router";
+import {removeDuplicates} from "../../common/util";
 
 const Main = (props: MainProps) => {
-    const {setStartedState} = props;
+    const {navigate} = props;
     // @ts-ignore
     const cityNames: string[] = citiesJSON
         .filter((cityInfo: {country: string}) => cityInfo.country === "FI")
@@ -30,7 +28,7 @@ const Main = (props: MainProps) => {
     };
 
     const begin = () => {
-        setStartedState(StartedState.Started)
+        navigate("/eduskunta2019/kysymykset", {startedState: StartedState.Started});
     };
 
     return (
@@ -75,7 +73,7 @@ const Main = (props: MainProps) => {
 };
 
 const mapDispatchToProps = (dispatch: any): MainProps => ({
-    setStartedState: (startedState: string) => dispatch(actionSetStartedState(startedState))
+    navigate: (url: string, state: object) => dispatch(push(url, state))
 });
 
 export default connect(null, mapDispatchToProps)(Main);

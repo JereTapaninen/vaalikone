@@ -7,10 +7,18 @@ import questionsJSON from "../../questions.json";
 import {connect} from "react-redux";
 import {StartedState} from "../../common/constants";
 import {actionSetStartedState} from "../../common/actions";
-import {VaalikoneProps} from "../../common/types";
+import {
+    VaalikoneDispatchProps,
+    VaalikoneProps,
+    SelectionButtonProps
+} from "../../common/types";
+import {push} from "connected-react-router";
+import {Redirect} from "react-router-dom";
+import {getLocationStateObject} from "../../common/util";
 
 const Vaalikone = (props: VaalikoneProps) => {
-    const {setStartedState} = props;
+    // @ts-ignore
+    const {navigate, location} = props;
     const [questions, setQuestions]: [string[], (arg: string[]) => void] = useState(questionsJSON);
     const [currentQuestionId, setCurrentQuestionId]: [number, (arg: number) => void] = useState(0);
     const [currentQuestion, setCurrentQuestion]: [string, (arg: string) => void] = useState(questions[0]);
@@ -19,7 +27,7 @@ const Vaalikone = (props: VaalikoneProps) => {
         const nextQuestionId = currentQuestionId + 1;
 
         if (nextQuestionId >= questions.length) {
-            setStartedState(StartedState.Ended);
+            navigate("/eduskunta2019/suositukset", {startedState: StartedState.Ended});
 
             return;
         }
@@ -59,9 +67,9 @@ const Vaalikone = (props: VaalikoneProps) => {
     );
 
     const firstQuestion = currentQuestionId === 0;
-    const lastQuestion = currentQuestionId + 1 === questions.length;
+    const lastQuestion = currentQuestionId === questions.length;
 
-    return (
+    return getLocationStateObject(location, "startedState") === StartedState.Started ? (
         <div>
             <div id="vaalikone-container">
                 <header id="vaalikone-header">
@@ -79,36 +87,11 @@ const Vaalikone = (props: VaalikoneProps) => {
                             <div id="answerSection">
                                 <div className="answerSelectorContainer">
                                     <div className="answerSelector">
-                                        <button
-                                            className="vaalivalinta"
-                                            onClick={() => selectOption(0)}
-                                            aria-label="Täysin samaa mieltä"
-                                        >
-                                        </button>
-                                        <button
-                                            className="vaalivalinta"
-                                            onClick={() => selectOption(1)}
-                                            aria-label="Osittain samaa mieltä"
-                                        >
-                                        </button>
-                                        <button
-                                            className="vaalivalinta"
-                                            onClick={() => selectOption(2)}
-                                            aria-label="En osaa sanoa"
-                                        >
-                                        </button>
-                                        <button
-                                            className="vaalivalinta"
-                                            onClick={() => selectOption(3)}
-                                            aria-label="Osittain eri mieltä"
-                                        >
-                                        </button>
-                                        <button
-                                            className="vaalivalinta"
-                                            onClick={() => selectOption(4)}
-                                            aria-label="Täysin eri mieltä"
-                                        >
-                                        </button>
+                                        <SelectionButton optionId={0} selectOption={selectOption} />
+                                        <SelectionButton optionId={1} selectOption={selectOption} />
+                                        <SelectionButton optionId={2} selectOption={selectOption} />
+                                        <SelectionButton optionId={3} selectOption={selectOption} />
+                                        <SelectionButton optionId={4} selectOption={selectOption} />
                                     </div>
                                     <div className="labels">
                                         <label>Täysin<br /> eri mieltä</label>
@@ -141,11 +124,21 @@ const Vaalikone = (props: VaalikoneProps) => {
                 </main>
             </div>
         </div>
+    ) : (
+        <Redirect push to="/eduskunta2019" />
     );
 };
 
-const mapDispatchToProps = (dispatch: any) => ({
-    setStartedState: (startedState: string) => dispatch(actionSetStartedState(startedState))
+const SelectionButton = (props: SelectionButtonProps) => (
+    <button
+        className="vaalivalinta"
+        onClick={() => props.selectOption(props.optionId)}
+    >
+    </button>
+);
+
+const mapDispatchToProps = (dispatch: any): VaalikoneDispatchProps => ({
+    navigate: (url: string, state: object) => dispatch(push(url, state))
 });
 
 export default connect(null, mapDispatchToProps)(Vaalikone);
