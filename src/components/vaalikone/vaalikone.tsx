@@ -14,7 +14,13 @@ import {
 } from "../../common/types";
 import {push} from "connected-react-router";
 import {Redirect} from "react-router-dom";
-import {getLocationStateObject} from "../../common/util";
+import {getLocationStateObject, hashAndSalt, encrypt, random} from "../../common/util";
+// @ts-ignore
+import publicIp from "public-ip";
+// @ts-ignore
+import partiesJSON from "../../parties.json";
+// @ts-ignore
+import runnersJSON from "../../runners.json";
 
 const Vaalikone = (props: VaalikoneProps) => {
     // @ts-ignore
@@ -27,7 +33,18 @@ const Vaalikone = (props: VaalikoneProps) => {
         const nextQuestionId = currentQuestionId + 1;
 
         if (nextQuestionId >= questions.length) {
-            navigate("/eduskunta2019/suositukset", {startedState: StartedState.Ended});
+            publicIp.v4().then((publicIp: string) => {
+                const hashedPublicIp =
+                    hashAndSalt(publicIp);
+                const encryptedRunnerId =
+                    encrypt(runnersJSON[random(0, runnersJSON.length - 1)].id.toString());
+                const encryptedPartyId =
+                    encrypt(partiesJSON[random(0, partiesJSON.length - 1)].toString());
+                navigate(
+                    `/eduskunta2019/suositukset/${hashedPublicIp}/${encryptedRunnerId}/${encryptedPartyId}`,
+                    {startedState: StartedState.Ended}
+                );
+            });
 
             return;
         }
