@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Donald J. Trump",
+        "id": 0,
+        "image": "trump.jpg"
+    },
+    {
+        "name": "Vladimir Putin",
+        "id": 1,
+        "image": "putin.jpeg"
+    },
+    {
+        "name": "Comrade Ankka",
+        "id": 2,
+        "image": "comrade_donald.jpg"
+    },
+    {
+        "name": "Kansallissosialisti Ankka",
+        "id": 3,
+        "image": "nazi_donald.jpg"
+    },
+    {
+        "name": "Torille-Krister",
+        "id": 4,
+        "image": "torille.jpeg"
+    }
+]
