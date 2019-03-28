@@ -117,6 +117,9 @@ footer#vaalikone-footer {
     border: 1px solid rgb(150, 150, 150);
     border-radius: 50%;
     cursor: pointer;
+    &:focus {
+        outline: none;
+    }
 }
 
 .vaalivalinta:hover {
