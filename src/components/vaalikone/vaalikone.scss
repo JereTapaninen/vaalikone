@@ -186,6 +186,11 @@ footer#vaalikone-footer {
     align-items: center;
     background-color: transparent;
     color: rgb(50, 155, 184);
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .margin-1vw {
