@@ -2,13 +2,12 @@
     display: flex;
     flex-direction: column;
     overflow-y: hidden;
-    background-color: rgb(233, 234, 237);
+    background-color: rgb(230, 230, 233);
     height: 100vh;
     align-items: center;
 }
 
 header#vaalikone-header {
-    background-color: #00194c;
     flex: 0 1 50px;
     width: 100%;
     display: flex;
@@ -48,7 +47,8 @@ main#vaalikone-main {
 
 #vaalikone-floating-box > .floating-box-main > #questionSection {
     height: 128px;
-    font-family: Sanomat;
+    font-weight: 700;
+    font-family: "Verdana";
     line-height: 1.3;
     font-size: 20px;
 }
@@ -97,8 +97,8 @@ footer#vaalikone-footer {
 }
 
 .cyan-subtitle {
-    color: #4196a4;
-    font-family: "SanomatSlab", 'Times New Roman', Times, serif;
+    color: rgb(50, 155, 184);
+    font-family: 'Times New Roman', Times, serif;
     font-size: 15px;
     font-weight: 700;
     font-style: normal;
@@ -114,24 +114,24 @@ footer#vaalikone-footer {
     width: 28px;
     height: 28px;
     background: #fff;
-    border: 1px solid #979797;
+    border: 1px solid rgb(150, 150, 150);
     border-radius: 50%;
     cursor: pointer;
 }
 
 .vaalivalinta:hover {
-    background-color: #4196a4;
+    background-color: rgb(50, 155, 184);
     box-shadow: rgb(255, 255, 255) 0px 0px 0px 3px inset;
 }
 
 .vaalivalinta:active {
-    border: 2px solid rgb(65, 150, 164);
+    border: 2px solid rgb(50, 155, 184);
 }
 
 .vaalivalinta.selected {
-    background-color: #4196a4;
+    background-color: rgb(50, 155, 184);
     box-shadow: rgb(255, 255, 255) 0px 0px 0px 3px inset;
-    border: 2px solid rgb(65, 150, 164);
+    border: 2px solid rgb(50, 155, 184);
 }
 
 .answerSelector {
@@ -175,7 +175,6 @@ footer#vaalikone-footer {
 
 .next, .previous {
     padding: 8px;
-    font-family: Helsingin;
     font-size: 16px;
     text-align: center;
     border: none;
@@ -183,7 +182,7 @@ footer#vaalikone-footer {
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    color: #4196a4;
+    color: rgb(50, 155, 184);
 }
 
 .margin-1vw {

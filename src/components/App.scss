@@ -1,5 +1,18 @@
+header {
+    background-color: rgb(25, 25, 100);
+}
+
+#logo, #logo:link, #logo:active, #logo:visited, #logo:hover {
+    color: white;
+    font-size: 40px;
+    font-weight: 700px;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 20px;
+    letter-spacing: 5px;
+    text-decoration: none;
+}
+
 .floating-box {
-    font-family: Helsingin;
     display: flex;
     margin-top: 32px;
     max-width: 640px;

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 128 128">
+  <title>Clairy Shutdown incon</title>
+  <desc>This icon is taken from Clarity Icon (they are licenced with GPL but I as an author release this one using CC 0 licence)</desc>
+  <path d="m60.688 9.7188c-3.0778 0-5.5625 2.4847-5.5625 5.5625v39.906c0 3.0778 2.4847 5.5625 5.5625 5.5625h5.9688c3.0778 0 5.5312-2.4847 5.5312-5.5625v-39.906c0-3.0778-2.4534-5.5625-5.5312-5.5625h-5.9688zm16.188 17.094v16.438c10.788 4.9078 18.281 15.781 18.281 28.406 0 17.221-13.935 31.156-31.156 31.156s-31.219-13.935-31.219-31.156c0-12.251 7.0922-22.835 17.375-27.938v-16.656c-19.022 5.8914-32.812 23.638-32.812 44.594 0 25.767 20.89 46.625 46.656 46.625 25.767 0 46.656-20.858 46.656-46.625 0-21.299-14.278-39.252-33.781-44.844" fill="#fff"/>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>White Clarity shutdown icon</dc:title>
+        <dc:date>2011-03-13T22:23:10</dc:date>
+        <dc:description>This icon is taken from Clarity Icon (they are licenced with GPL but I as an author release this one using CC 0 licence).\n\nWarning: It is white with transparent background so it looks like invisible. You can see it on logout button, when you are logged in.</dc:description>
+        <dc:source>http://openclipart.org/detail/127261/clarity-shutdown-icon-by-kuba</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>kuba</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>Clarity</rdf:li>
+            <rdf:li>Icon</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>monoshape</rdf:li>
+            <rdf:li>poweroff</rdf:li>
+            <rdf:li>shutdown</rdf:li>
+            <rdf:li>turnoff</rdf:li>
+            <rdf:li>white</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
