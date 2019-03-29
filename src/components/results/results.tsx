@@ -13,12 +13,11 @@ import {
 } from "../../common/actions";
 import {push} from "connected-react-router";
 import {Redirect} from "react-router-dom";
-import {getLocationStateObject} from "../../common/util";
+import {decrypt} from "../../common/util";
 // @ts-ignore
 import partiesJSON from "../../parties.json";
 // @ts-ignore
 import runnersJSON from "../../runners.json";
-import {decrypt} from "../../common/util";
 
 const Results = (props: ResultsProps & {match: any}) => {
     const {location} = props;
@@ -34,7 +33,9 @@ const Results = (props: ResultsProps & {match: any}) => {
     const runner: any = runnersJSON.find((runner: any) => runner.id === runnerId);
     const party = decrypt(encryptedParty);
 
-    return (
+    const dataIsValid = runner !== undefined && partiesJSON.includes(party);
+
+    return dataIsValid ? (
         <div>
             <div id="results-container">
                 <header id="results-header">
@@ -66,6 +67,8 @@ const Results = (props: ResultsProps & {match: any}) => {
                 </main>
             </div>
         </div>
+    ) : (
+        <Redirect push to="/eduskunta2019" />
     );
 };
 

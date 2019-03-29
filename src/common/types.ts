@@ -1,7 +1,3 @@
-import {
-    StartedState
-} from "./constants";
-
 export interface MainProps {
     navigate: (arg: string, arg2: object) => void
 }
