@@ -1,44 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Vaalikone
 
-## Available Scripts
+Vaalikone is a joke web application made for April Fools 2019, just before the Finnish parliamentary elections of 2019.
 
-In the project directory, you can run:
+## How to run Vaalikone locally
 
-### `npm start`
+* Clone the repository
+* Use node version <b>10</b> and then `npm install`
+* Run `npm start`
+* You can now visit your local Vaalikone at http://localhost:3000
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Code standards
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Vaalikone follows strict code quality standards. This includes fully functional immutable programming and TypeScript. No mutation is allowed.
 
-### `npm test`
+* No mutation!
+* Functional programming
+* TypeScript
+* Do not exceed 100 characters per line
+* Try to avoid types like "any" or "array" or "object". Those are vague and are not really better than no type
+* Function names should tell what the function does to a programmer, not a computer. This means the function names should be as clear and descriptive as possible
+* Use stateful functional components (with hooks and effects) instead of class-based stateful components
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Modules
 
-### `npm run build`
+We use the following modules:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* React Router
+* Sass
+* Redux
+* React
+* TypeScript
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Testing your code
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Testing locally is required before creating a merge request. <br />
+Testing of React Components is done using Enzyme, while testing of functions and code in general is done using Jest Unit Tests. Website functional testing should be done using Selenium.<br />
 
-### `npm run eject`
+Run your tests by running `npm run test`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Building and deploying your code
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To build your code, run `npm run build`. This will create bundled files in `./build/`. <b>Remember to use node version 10 to build</b>
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+We have used Firebase to deploy our code. You can select something different, but if you want to use Firebase, here is how you do it:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* Set up things in Firebase console for deployment
+* In Vaalikone, run `./node_modules/.bin/firebase login`, or if you have a global copy of Firebase, just run `firebase login`. Log in to your Firebase account.
+* Run `./node_modules/.bin/firebase deploy` or `firebase deploy`
+* You have now deployed successfully.
 
-## Learn More
+If you merge code using pull requests, the CI pipeline using Travis will also deploy automatically to Firebase.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## CI and merging in your code
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To merge your code in, <b>do not push to master</b>.<br />
+Instead, use the CI pipeline we have set up using Travis.<br />
+
+* Create a new branch locally with your commits in it
+* Push using -f to remote branch, like `git push origin someX -f`
+* From the main page of Vaalikone, create a pull request to merge from your branch to master
+* Ask for review from other collaborators
+* Wait for Travis pipeline to finish and to deploy
+* All MUST be green before merging
+* Merge in your code
+
+## Collaborators
+
+* Jere Tapaninen (JereTapaninen)
+* Roope Tapaninen (roope-t)

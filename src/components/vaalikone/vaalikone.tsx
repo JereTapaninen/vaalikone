@@ -14,7 +14,7 @@ import {
 } from "../../common/types";
 import {push} from "connected-react-router";
 import {Redirect} from "react-router-dom";
-import {getLocationStateObject, hashAndSalt, encrypt, random} from "../../common/util";
+import {getLocationStateObject, hashAndSalt, encrypt, random, range} from "../../common/util";
 // @ts-ignore
 import publicIp from "public-ip";
 // @ts-ignore
@@ -25,9 +25,19 @@ import runnersJSON from "../../runners.json";
 const Vaalikone = (props: VaalikoneProps) => {
     // @ts-ignore
     const {navigate, location} = props;
-    const [questions, setQuestions]: [string[], (arg: string[]) => void] = useState(questionsJSON);
-    const [currentQuestionId, setCurrentQuestionId]: [number, (arg: number) => void] = useState(0);
-    const [currentQuestion, setCurrentQuestion]: [string, (arg: string) => void] = useState(questions[0]);
+
+    if (getLocationStateObject(location, "startedState") !== StartedState.Started) {
+        return <Redirect push to="/eduskunta2019" />;
+    }
+
+    const [questions, setQuestions]: [string[], (arg: string[]) => void] =
+        useState(questionsJSON);
+    const [currentQuestionId, setCurrentQuestionId]: [number, (arg: number) => void] =
+        useState(0);
+    const [currentQuestion, setCurrentQuestion]: [string, (arg: string) => void] =
+        useState(questions[0]);
+    const [questionHistory, setQuestionHistory]: [number[], (arg: number[]) => void] =
+        useState(questions.map(_ => -1));
 
     const goToNextQuestion = () => {
         const nextQuestionId = currentQuestionId + 1;
@@ -65,7 +75,10 @@ const Vaalikone = (props: VaalikoneProps) => {
     }
 
     const selectOption = (option: number) => {
-        // @TODO: Implement selected option functionality - save answer
+        setQuestionHistory(questionHistory.reduce((acc: number[], curr, index): number[] => [
+            ...acc,
+            index === currentQuestionId ? option : curr
+        ], []))
         goToNextQuestion();
     };
 
@@ -81,10 +94,20 @@ const Vaalikone = (props: VaalikoneProps) => {
         </button>
     );
 
+    const generateSelectionButtons = (): JSX.Element[] =>
+        range(5).map(key =>
+            <SelectionButton
+                key={key}
+                optionId={key}
+                selectOption={selectOption}
+                defaultSelected={key === questionHistory[currentQuestionId]}
+            />
+        );
+
     const firstQuestion = currentQuestionId === 0;
     const lastQuestion = currentQuestionId === questions.length;
 
-    return getLocationStateObject(location, "startedState") === StartedState.Started ? (
+    return (
         <div>
             <div id="vaalikone-container">
                 <header id="vaalikone-header">
@@ -102,11 +125,7 @@ const Vaalikone = (props: VaalikoneProps) => {
                             <div id="answerSection">
                                 <div className="answerSelectorContainer">
                                     <div className="answerSelector">
-                                        <SelectionButton optionId={0} selectOption={selectOption} />
-                                        <SelectionButton optionId={1} selectOption={selectOption} />
-                                        <SelectionButton optionId={2} selectOption={selectOption} />
-                                        <SelectionButton optionId={3} selectOption={selectOption} />
-                                        <SelectionButton optionId={4} selectOption={selectOption} />
+                                        {generateSelectionButtons()}
                                     </div>
                                     <div className="labels">
                                         <label>Täysin<br /> eri mieltä</label>
@@ -139,14 +158,12 @@ const Vaalikone = (props: VaalikoneProps) => {
                 </main>
             </div>
         </div>
-    ) : (
-        <Redirect push to="/eduskunta2019" />
-    );
+    )
 };
 
 const SelectionButton = (props: SelectionButtonProps) => (
     <button
-        className="vaalivalinta"
+        className={`vaalivalinta${props.defaultSelected ? " defaultselected" : ""}`}
         onClick={() => props.selectOption(props.optionId)}
     >
     </button>

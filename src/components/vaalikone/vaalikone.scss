@@ -127,6 +127,11 @@ footer#vaalikone-footer {
     box-shadow: rgb(255, 255, 255) 0px 0px 0px 3px inset;
 }
 
+.vaalivalinta.defaultselected {
+    background-color: rgb(150, 150, 150);
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 3px inset;
+}
+
 .vaalivalinta:active {
     border: 2px solid rgb(50, 155, 184);
 }

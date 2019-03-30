@@ -5,11 +5,10 @@ import "./main.css";
 import citiesJSON from "cities.json";
 // @ts-ignore
 import {connect} from "react-redux";
-import {ActionType, StartedState} from "../../common/constants";
-import {actionSetStartedState} from "../../common/actions";
+import {StartedState} from "../../common/constants";
 import {MainProps} from "../../common/types";
 import {push} from "connected-react-router";
-import {removeDuplicates} from "../../common/util";
+import {removeDuplicates, random, range} from "../../common/util";
 
 const Main = (props: MainProps) => {
     const {navigate} = props;
@@ -31,6 +30,19 @@ const Main = (props: MainProps) => {
         navigate("/eduskunta2019/kysymykset", {startedState: StartedState.Started});
     };
 
+    const generateQuickCities = (): JSX.Element[] => 
+        range(6).map(_ => {
+            const selectedCity = cities[random(0, cities.length - 1)];
+            return (
+                <p
+                    onClick={() => setCurrentCity(selectedCity)}
+                    className="fake-a"
+                >
+                    {selectedCity}
+                </p>
+            );
+        });
+
     return (
         <div id="main-container">
             <header id="main-header">
@@ -40,23 +52,18 @@ const Main = (props: MainProps) => {
             <main id="main-main">
                 <div className="floating-box" id="main-floating-box">
                     <div className="floating-box-header">
-                        Löydä sinulle sopiva puolue ja ehdokas
+                        Löydä sinulle sopiva ehdokas
                     </div>
                     <div className="floating-box-main">
                         <div className="floating-box-main-container">
-                            <h3 id="begin-subtitle">Aloita valitsemalla vaalipiirisi</h3>
+                            <h3 id="begin-subtitle">Aloita valitsemalla kuntasi</h3>
                             <input onChange={onChange} value={currentCity} placeholder="Hae vaalipiiriä tai kuntaa" id="input-city" type="text" name="example" list="exampleList" />
                             <datalist id="exampleList">
                                 {cities.map(city => <option key={city} value={city} />)}
                             </datalist>
                             <div id="pickfromlist">
                                 <b>Tai valitse listasta:</b>
-                                <p onClick={() => setCurrentCity("Espoo")} className="fake-a">Espoo</p>
-                                <p onClick={() => setCurrentCity("Helsinki")} className="fake-a">Helsinki</p>
-                                <p onClick={() => setCurrentCity("Kauniainen")} className="fake-a">Kauniainen</p>
-                                <p onClick={() => setCurrentCity("Tampere")} className="fake-a">Tampere</p>
-                                <p onClick={() => setCurrentCity("Turku")} className="fake-a">Turku</p>
-                                <p onClick={() => setCurrentCity("Vantaa")} className="fake-a">Vantaa</p>
+                                {generateQuickCities()}
                             </div>
                         </div>
                         <div id="submit-form">
@@ -71,6 +78,9 @@ const Main = (props: MainProps) => {
         </div>
     );
 };
+
+const ListItem = (city: any, setCurrentCity: any): JSX.Element =>
+    <p onClick={() => setCurrentCity(city)} className="fake-a">{city}</p>;
 
 const mapDispatchToProps = (dispatch: any): MainProps => ({
     navigate: (url: string, state: object) => dispatch(push(url, state))
