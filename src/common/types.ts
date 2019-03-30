@@ -24,5 +24,6 @@ export type ResultsProps = ResultsDispatchProps & {
 
 export interface SelectionButtonProps {
     optionId: number,
-    selectOption: (arg: number) => void
+    selectOption: (arg: number) => void,
+    defaultSelected: boolean
 }

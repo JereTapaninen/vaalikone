@@ -4,9 +4,13 @@ import cryptojs from "crypto-js";
 export const getLocationStateObject = (location: any, variable: string): any =>
     location.state ? location.state[variable] : undefined;
 
-export const removeDuplicates = (values: string[]) =>
+export const removeDuplicates = (values: string[]): string[] =>
     // @ts-ignore
     [...new Set(values)];
+
+export const range = (amount: number): number[] =>
+    // @ts-ignore
+    [...new Array(amount).keys()];
 
 export const encrypt = (value: string): string =>
     cryptojs.enc.Base64.stringify(cryptojs.enc.Utf8.parse(value)).toString()
