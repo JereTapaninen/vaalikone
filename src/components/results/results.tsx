@@ -75,7 +75,7 @@ const Results = (props: ResultsProps & {match: any}) => {
                             <div id="answerSection">
                             </div>
                         </div>
-                        <SocialMediaLinks title='Jaa tuloksesi!' />
+                        <SocialMediaLinks title='Jaa tuloksesi!' text={`Tein vaalikoneen - Suositus minulle on ${party} ja ${runner.name}`} />
                     </div>
                 </main>
                 <footer id="results-footer">
