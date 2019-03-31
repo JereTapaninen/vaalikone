@@ -75,7 +75,7 @@ const Results = (props: ResultsProps & {match: any}) => {
                                 comesFromVaalikone ? (<div id="questionSection">
                                     <h3>Vastausten perusteella sinulle sopivin ehdokas on {runner.name}, {party}</h3>
                                 </div>) : (<div id="questionSection">
-                                    <h3>Vastausten perusteella kaverisi sopivin ehdokas oli {runner.name}, {party}</h3>,
+                                    <h3>Vastausten perusteella kaverisi sopivin ehdokas oli {runner.name}, {party}</h3>
                                     <a href="/eduskunta2019/">Löydä oma ehdokkaasi!</a>
                                 </div>)
                             }
@@ -96,10 +96,12 @@ const Results = (props: ResultsProps & {match: any}) => {
                         <span>{comesFromVaalikone ? "Palaa vaalikoneeseen" : "Aloita vaalikone!"}</span>
                     </button>
                 </footer>
-                <div className="prank-application-info">
-                    Vaalikone on pila-applikaatio, joka luo satunnaisesti ehdokkaan ja puolueen.<br />
-                    <small><a href="https://github.com/JereTapaninen/vaalikone">Tsekkaa Vaalikoneen GitHub!</a></small>
-                </div>
+                {comesFromVaalikone &&
+                    <div className="prank-application-info">
+                        Vaalikone on pila-applikaatio, joka luo satunnaisesti ehdokkaan ja puolueen.<br />
+                        <small><a href="https://github.com/JereTapaninen/vaalikone">Tsekkaa Vaalikoneen GitHub!</a></small>
+                    </div>
+                }
             </div>
         </div>
     ) : (
