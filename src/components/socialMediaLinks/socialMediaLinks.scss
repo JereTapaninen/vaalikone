@@ -7,14 +7,19 @@
 
   .social-media__icons {
       padding: 18px;
+      display: flex;
 
       a {
+          width: 50px;
+          height: 50px;
+          position: relative;
           &:not(:first-child) {
               margin-left: 16px;
           }
           img {
               width: 50px;
               height: 50px;
+              position: absolute;
           }
 
           &.whatsapp {
@@ -22,6 +27,31 @@
               @media (hover: hover) and (pointer: fine) {
                   display: none;
               }
+          }
+
+          &:hover:after {
+            position: absolute;
+            bottom: px;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            content: '';
+            z-index: 1;
+            background-color: rgba(255,255,255, 0.15);
+            border-radius: 100%;
+            pointer-events: none;
+          }
+
+          &:active:after {
+            background-color: rgba(0,0,0, 0.15);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            content: '';
+            z-index: 1;
+            pointer-events: none;
           }
       }
   }
