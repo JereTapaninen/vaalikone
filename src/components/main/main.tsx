@@ -75,7 +75,7 @@ const Main = (props: MainProps) => {
                             </div>
                         </div>
                         <div id="submit-form">
-                            <button id="submit" onClick={begin}>
+                            <button id="submit" className="cyan-btn" onClick={begin}>
                                 <img alt='hehe' src="shutdown.svg" width="30px" height="30px" />
                                 <span>Käynnistä vaalikone</span>
                             </button>

@@ -12,6 +12,38 @@ header {
     text-decoration: none;
 }
 
+.cyan-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    font-size: 15px;
+    line-height: 1.13;
+    text-align: center;
+    color: #fff;
+    padding: 0 16px;
+    border: none;
+    background-color: rgb(50, 155, 184);
+    align-items: center;
+    cursor: pointer;
+
+    height: 45px;
+    width: 250px;
+    border-radius: 22px;
+}
+
+.cyan-btn:hover {
+    background-color: rgb(70, 175, 204);
+}
+
+.cyan-btn:active {
+    background-color: rgb(40, 145, 174);
+}
+
+.cyan-btn:focus {
+    outline: none;
+}
+
 .floating-box {
     display: flex;
     margin-top: 32px;
