@@ -87,9 +87,11 @@ const Results = (props: ResultsProps & {match: any}) => {
                             </div>
                         </div>
                         {
-                            comesFromVaalikone ?
-                                <SocialMediaLinks title='Jaa tuloksesi!' text={`Tein vaalikoneen - Suositus minulle on ${party} ja ${runner.name}`} /> :
-                                null
+                            comesFromVaalikone &&
+                                <SocialMediaLinks
+                                    title="Jaa tuloksesi!"
+                                    text={`Tein vaalikoneen - Suositus minulle on ${party} ja ${runner.name}`}
+                                />
                         }
                     </div>
                 </main>
