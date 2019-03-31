@@ -21,6 +21,7 @@ import publicIp from "public-ip";
 import partiesJSON from "../../parties.json";
 // @ts-ignore
 import runnersJSON from "../../runners.json";
+import SocialMediaLinks from "../socialMediaLinks/socialMediaLinks";
 
 const Vaalikone = (props: VaalikoneProps) => {
     // @ts-ignore
@@ -155,6 +156,7 @@ const Vaalikone = (props: VaalikoneProps) => {
                             </div>
                         </div>
                     </div>
+                    <SocialMediaLinks url={window.location.origin} />
                 </main>
             </div>
         </div>
