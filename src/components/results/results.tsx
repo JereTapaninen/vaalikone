@@ -54,6 +54,7 @@ const Results = (props: ResultsProps & {match: any}) => {
                                         style={{borderRadius: "50%"}}
                                         width="120px"
                                         height="120px"
+                                        alt="Ehdokkaan kuva"
                                     />
                                 </div>
                                 <div>
