@@ -5,7 +5,7 @@ body {
     font-family: "Segoe UI", "Tahoma", "Times New Roman", sans-serif, serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    min-height: 500px;
+    min-height: 100vh;
     overflow-x: hidden;
     background-color: rgb(233, 234, 237);
 }

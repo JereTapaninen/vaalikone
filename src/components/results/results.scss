@@ -2,8 +2,6 @@
     display: flex;
     flex-direction: column;
     overflow-y: hidden;
-    background-color: rgb(230, 230, 233);
-    height: 100vh;
     align-items: center;
 }
 
@@ -27,6 +25,10 @@ main#results-main {
     @media only screen and (max-width: 700px) {
         width: 90vw;
     }
+
+    &>* {
+        flex-shrink: 0;
+    }
 }
 
 .floating-box#results-floating-box {
@@ -36,6 +38,10 @@ main#results-main {
     padding: 0;
     width: 640px;
     max-width: 100%;
+
+    &>* {
+        flex-shrink: 0;
+    }
 }
 
 #results-floating-box > .floating-box-header {
@@ -48,9 +54,8 @@ main#results-main {
     flex-direction: column;
     justify-content: space-between;
     background-color: rgb(70, 70, 225);
-    margin-top: 10px;
+    margin-top: 30px;
     margin-bottom: 10px;
-    height: 80px;
 }
 
 #results-floating-box > .floating-box-main > #inner-container {
@@ -58,8 +63,21 @@ main#results-main {
     align-items: center;
     margin-top: -20px;
     margin-left: 20px;
+    margin-right: 20px;
     color: white;
     font-weight: 700;
+
+    @media only screen and (max-width: 640px) {
+        flex-direction: column;
+
+        * {
+            text-align: center;
+        }
+
+        &>div {
+            padding-bottom: 20px;
+        }
+    }
 }
 
 #results-floating-box > .floating-box-main > #inner-container > div:first-child {
@@ -82,6 +100,7 @@ main#results-main {
     align-items: center;
     padding-left: 16px;
     padding-right: 16px;
+    max-width: calc(100% - 32px);
 }
 
 #floating-box-buttons {
