@@ -101,7 +101,7 @@ const Results = (props: ResultsProps & {match: any}) => {
                     </button>
                 </footer>
             </div>
-            <div className="prank-application-info">Aprillipila: <a target="blank" rel="noopener noreferrer" href="https://github.com/JereTapaninen/vaalikone/">https://github.com/JereTapaninen/vaalikone/</a></div>
+            <div className="prank-application-info">Aprillipila: <a target="_blank" rel="noopener noreferrer" href="https://github.com/JereTapaninen/vaalikone/">https://github.com/JereTapaninen/vaalikone/</a></div>
         </div>
     ) : (
         <Redirect push to="/eduskunta2019" />
