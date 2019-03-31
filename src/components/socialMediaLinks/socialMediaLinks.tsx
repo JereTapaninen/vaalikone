@@ -5,15 +5,17 @@ import './socialMediaLinks.scss';
 interface SocialMediaLinksProps {
   url?: string
   title?: string
+  text?: string
 };
 
-const SocialMediaLinks = ({url, title}: SocialMediaLinksProps) => {
+const SocialMediaLinks = ({url, title, text}: SocialMediaLinksProps) => {
 
   const urlToShare = url ? encodeURIComponent(url) : encodeURIComponent(window.location.href);
+  const textToShare = text ? encodeURIComponent(text) : 'Vaalikone%3a+Eduskuntavaalit+2019'
 
-  const facebookShareLink = `https://www.facebook.com/sharer.php?sdk=joey&u=${urlToShare}&display=popup&quote=Vaalikone%3a+Eduskuntavaalit+2019`;
-  const twitterShareLink = `https://twitter.com/intent/tweet?text=Vaalikone%3a+Eduskuntavaalit+2019&url=${urlToShare}`;
-  const whatsappShareLink = `whatsapp://send?text=Vaalikone%3a+Eduskuntavaalit+2019+${urlToShare}`;
+  const facebookShareLink = `https://www.facebook.com/sharer.php?sdk=joey&u=${urlToShare}&display=popup&quote=${textToShare}`;
+  const twitterShareLink = `https://twitter.com/intent/tweet?text=${textToShare}&url=${urlToShare}`;
+  const whatsappShareLink = `whatsapp://send?text=${textToShare}+${urlToShare}`;
 
   return <div className="social-media">
     <div className="social-media__title">{title || 'Jaa vaalikone'}</div>
