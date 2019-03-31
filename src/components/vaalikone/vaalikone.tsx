@@ -1,5 +1,6 @@
 // @ts-ignore
 import React, {useState} from "react";
+import ReactDOM from "react-dom";
 import "./vaalikone.scss";
 // @ts-ignore
 import questionsJSON from "../../questions.json";
@@ -22,6 +23,10 @@ import partiesJSON from "../../parties.json";
 // @ts-ignore
 import runnersJSON from "../../runners.json";
 import SocialMediaLinks from "../socialMediaLinks/socialMediaLinks";
+import LoadingOverlay, {
+    show as showLoadingScreen,
+    hide as hideLoadingScreen
+} from "../loadingOverlay/loadingOverlay";
 
 const Vaalikone = (props: VaalikoneProps) => {
     // @ts-ignore
@@ -44,18 +49,37 @@ const Vaalikone = (props: VaalikoneProps) => {
         const nextQuestionId = currentQuestionId + 1;
 
         if (nextQuestionId >= questions.length) {
-            publicIp.v4().then((publicIp: string) => {
-                const hashedPublicIp =
-                    hashAndSalt(publicIp);
-                const encryptedRunnerId =
-                    encrypt(runnersJSON[random(0, runnersJSON.length - 1)].id.toString());
-                const encryptedPartyId =
-                    encrypt(partiesJSON[random(0, partiesJSON.length - 1)].toString());
-                navigate(
-                    `/eduskunta2019/suositukset/${hashedPublicIp}/${encryptedRunnerId}/${encryptedPartyId}`,
-                    {startedState: StartedState.Ended}
-                );
-            });
+            showLoadingScreen(<LoadingOverlay text="Ladataan tuloksia..." />);
+            publicIp.v4()
+                .then((publicIp: string) => {
+                    const hashedPublicIp =
+                        hashAndSalt(publicIp);
+                    const encryptedRunnerId =
+                        encrypt(runnersJSON[random(0, runnersJSON.length - 1)].id.toString());
+                    const encryptedPartyId =
+                        encrypt(partiesJSON[random(0, partiesJSON.length - 1)].toString());
+                    navigate(
+                        `/eduskunta2019/suositukset/${hashedPublicIp}/${encryptedRunnerId}/${encryptedPartyId}`,
+                        {startedState: StartedState.Ended}
+                    );
+                })
+                .catch(() => {
+                    // something went wrong with publicIp API,
+                    // resort to default functionality
+                    const hashedPublicIp =
+                        hashAndSalt("default");
+                    const encryptedRunnerId =
+                        encrypt(runnersJSON[random(0, runnersJSON.length - 1)].id.toString());
+                    const encryptedPartyId =
+                        encrypt(partiesJSON[random(0, partiesJSON.length - 1)].toString());
+                    navigate(
+                        `/eduskunta2019/suositukset/${hashedPublicIp}/${encryptedRunnerId}/${encryptedPartyId}`,
+                        {startedState: StartedState.Ended}
+                    );
+                })
+                .finally(() => {
+                    hideLoadingScreen();
+                });
 
             return;
         }

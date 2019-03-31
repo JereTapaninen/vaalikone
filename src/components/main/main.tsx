@@ -10,6 +10,11 @@ import {MainProps} from "../../common/types";
 import {push} from "connected-react-router";
 import {removeDuplicates, random, range} from "../../common/util";
 import SocialMediaLinks from "../socialMediaLinks/socialMediaLinks";
+import shutdown from "./shutdown.svg";
+import LoadingOverlay, {
+    show as showLoadingScreen,
+    hide as hideLoadingScreen
+} from "../loadingOverlay/loadingOverlay";
 
 const Main = (props: MainProps) => {
     const {navigate} = props;
@@ -31,7 +36,22 @@ const Main = (props: MainProps) => {
     };
 
     const begin = () => {
-        navigate("/eduskunta2019/kysymykset", {startedState: StartedState.Started});
+        // Fake loading screen to immerse the user
+        showLoadingScreen(<LoadingOverlay text="Ladataan vaalikonetta..." />);
+        new Promise((resolve) => {
+            setTimeout(function() {
+                resolve();
+            }, random(100, 400));
+        })
+            .then(() => {
+                navigate(
+                    "/eduskunta2019/kysymykset",
+                    {startedState: StartedState.Started}
+                );
+            })
+            .finally(() => {
+                hideLoadingScreen();
+            });
     };
 
     const generateQuickCities = (): JSX.Element[] => 
@@ -78,7 +98,7 @@ const Main = (props: MainProps) => {
                         </div>
                         <div id="submit-form">
                             <button id="submit" className="cyan-btn" onClick={begin}>
-                                <img alt='hehe' src="shutdown.svg" width="30px" height="30px" />
+                                <img alt="Aloita" src={shutdown} width="30px" height="30px" />
                                 <span>Käynnistä vaalikone</span>
                             </button>
                         </div>
@@ -89,9 +109,6 @@ const Main = (props: MainProps) => {
         </div>
     );
 };
-
-const ListItem = (city: any, setCurrentCity: any): JSX.Element =>
-    <p onClick={() => setCurrentCity(city)} className="fake-a">{city}</p>;
 
 const mapDispatchToProps = (dispatch: any): MainProps => ({
     navigate: (url: string, state: object) => dispatch(push(url, state))
