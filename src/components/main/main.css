@@ -95,6 +95,8 @@ main#main-main {
     border-image: initial;
     outline: 0px !important;
     width: 100%;
+    max-width: 100%;
+    min-width: 100%;
     font-size: 15px;
 }
 
@@ -130,7 +132,9 @@ main#main-main {
 }
 
 #pickfromlist {
-    width: 90%;
+    width: 500px;
+    max-width: 500px;
+    min-width: 500px;
     display: flex;
     flex-wrap: wrap;
     margin-top: 1rem;
