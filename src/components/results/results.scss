@@ -1,0 +1,105 @@
+#results-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    background-color: rgb(230, 230, 233);
+    height: 100vh;
+    align-items: center;
+}
+
+header#results-header {
+    flex: 0 1 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+main#results-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 640px;
+    width: 640px;
+
+    @media only screen and (max-width: 700px) {
+        width: 90vw;
+    }
+}
+
+.floating-box#results-floating-box {
+    align-items: flex-start !important;
+    flex-direction: column;
+    display: flex;
+    padding: 0;
+    width: 640px;
+    max-width: 100%;
+}
+
+#results-floating-box > .floating-box-header {
+    padding: 16px 16px 0 16px;
+}
+
+#results-floating-box > .floating-box-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(70, 70, 225);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 80px;
+}
+
+#results-floating-box > .floating-box-main > #inner-container {
+    display: flex;
+    align-items: center;
+    margin-top: -20px;
+    margin-left: 20px;
+    color: white;
+    font-weight: 700;
+}
+
+#results-floating-box > .floating-box-main > #inner-container > div:first-child {
+    margin-right: 15px;
+}
+
+#party-band {
+    font-size: 13px;
+}
+
+#runner {
+    font-size: 28px;
+}
+
+#results-floating-box > .floating-box-footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+#floating-box-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#share-btn {
+    width: 120px;
+}
+
+footer#results-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}

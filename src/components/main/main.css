@@ -104,26 +104,6 @@ main#main-main {
     border: 2px solid rgb(50, 155, 184);
 }
 
-#submit {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-    font-size: 15px;
-    line-height: 1.13;
-    text-align: center;
-    color: #fff;
-    padding: 0 16px;
-    border: none;
-    background-color: rgb(50, 155, 184);
-    align-items: center;
-    cursor: pointer;
-
-    height: 45px;
-    width: 250px;
-    border-radius: 22px;
-}
-
 #submit-form {
     display: flex;
     justify-content: center;
