@@ -56,7 +56,7 @@ const Results = (props: ResultsProps & {match: any}) => {
                                         height="120px"
                                     />
                                 </div>
-                                <div className="party-info">
+                                <div>
                                     <div id="party-band">
                                         {party}
                                     </div>
