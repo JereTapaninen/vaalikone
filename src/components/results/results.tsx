@@ -96,14 +96,13 @@ const Results = (props: ResultsProps & {match: any}) => {
                         <span>{comesFromVaalikone ? "Palaa vaalikoneeseen" : "Aloita vaalikone!"}</span>
                     </button>
                 </footer>
-            </div>
-            {
-                comesFromVaalikone &&
+                {comesFromVaalikone &&
                     <div className="prank-application-info">
                         Vaalikone on pila-applikaatio, joka luo satunnaisesti ehdokkaan ja puolueen.<br />
                         <small><a href="https://github.com/JereTapaninen/vaalikone">Tsekkaa Vaalikoneen GitHub!</a></small>
                     </div>
-            }
+                }
+            </div>
         </div>
     ) : (
         <Redirect push to="/eduskunta2019" />
