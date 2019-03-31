@@ -7,16 +7,17 @@ import {
 } from "../../common/types";
 import {push} from "connected-react-router";
 import {Redirect} from "react-router-dom";
-import {decrypt} from "../../common/util";
+import {decrypt, getLocationStateObject} from "../../common/util";
 // @ts-ignore
 import partiesJSON from "../../parties.json";
 // @ts-ignore
 import runnersJSON from "../../runners.json";
 import "./results.scss";
 import SocialMediaLinks from "../socialMediaLinks/socialMediaLinks";
+import {StartedState} from "../../common/constants";
 
 const Results = (props: ResultsProps & {match: any}) => {
-    const {navigate} = props;
+    const {navigate, location} = props;
     const hashedIp = props.match.params.ip;
     const encryptedRunnerId = props.match.params.id;
     const encryptedParty = props.match.params.party;
@@ -34,6 +35,8 @@ const Results = (props: ResultsProps & {match: any}) => {
     const party = decrypt(encryptedParty);
 
     const dataIsValid = runner !== undefined && partiesJSON.includes(party);
+    const comesFromVaalikone =
+        getLocationStateObject(location, "startedState") === StartedState.Ended;
 
     return dataIsValid ? (
         <div>
@@ -68,19 +71,33 @@ const Results = (props: ResultsProps & {match: any}) => {
                             </div>
                         </div>
                         <div className="floating-box-footer">
-                            <div id="questionSection">
-                                <h3>Vastausten perusteella sinulle sopivin ehdokas on {runner.name}, {party}</h3>
-                                <p>Vaalikone näyttää sopivimman puolueen ja sen puolueen sopivimman ehdokkaan.</p>
-                            </div>
+                            {
+                                comesFromVaalikone ? (<div id="questionSection">
+                                    <h3>Vastausten perusteella sinulle sopivin ehdokas on {runner.name}, {party}</h3>
+                                    <p>
+                                        Vaalikone on pila-applikaatio, joka luo satunnaisesti ehdokkaan ja puolueen.<br />
+                                        <small><a href="https://github.com/JereTapaninen/vaalikone">Tsekkaa Vaalikoneen GitHub!</a></small>
+                                    </p>
+                                </div>) : (<div id="questionSection">
+                                    <h3>Vastausten perusteella kaverisi sopivin ehdokas oli {runner.name}, {party}</h3>,
+                                    <a href="/eduskunta2019/">Löydä oma ehdokkaasi!</a>
+                                </div>)
+                            }
                             <div id="answerSection">
                             </div>
                         </div>
-                        <SocialMediaLinks title='Jaa tuloksesi!' text={`Tein vaalikoneen - Suositus minulle on ${party} ja ${runner.name}`} />
+                        {
+                            comesFromVaalikone &&
+                                <SocialMediaLinks
+                                    title="Jaa tuloksesi!"
+                                    text={`Tein vaalikoneen - Suositus minulle on ${party} ja ${runner.name}`}
+                                />
+                        }
                     </div>
                 </main>
                 <footer id="results-footer">
                     <button id="return-btn" className="cyan-btn" onClick={goToVaalikone}>
-                        <span>Palaa vaalikoneeseen</span>
+                        <span>{comesFromVaalikone ? "Palaa vaalikoneeseen" : "Aloita vaalikone!"}</span>
                     </button>
                 </footer>
             </div>

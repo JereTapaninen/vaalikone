@@ -1,5 +1,6 @@
 // @ts-ignore
 import cryptojs from "crypto-js";
+import ReactDOM from "react-dom";
 
 export const getLocationStateObject = (location: any, variable: string): any =>
     location.state ? location.state[variable] : undefined;
@@ -29,3 +30,16 @@ export const hashAndSalt = (value: string): string =>
 
 export const random = (minValue: number, maxValue: number): number =>
     Math.floor((Math.random() * maxValue) + minValue);
+
+export const showOverlay = (loadingOverlay: JSX.Element) =>
+    ReactDOM.render(loadingOverlay, document.querySelector("#overlay"));
+
+export const hideOverlay = () => {
+    if (!document.querySelector("#overlay")) {
+        throw new Error("Overlay not found!");
+    }
+
+    ReactDOM.unmountComponentAtNode(
+        document.querySelector("#overlay") || document.createElement("DIV")
+    );
+}

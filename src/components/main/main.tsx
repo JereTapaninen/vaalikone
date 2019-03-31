@@ -8,13 +8,17 @@ import {connect} from "react-redux";
 import {StartedState} from "../../common/constants";
 import {MainProps} from "../../common/types";
 import {push} from "connected-react-router";
-import {removeDuplicates, random, range} from "../../common/util";
+import {
+    removeDuplicates,
+    random,
+    range,
+    showOverlay,
+    hideOverlay
+} from "../../common/util";
 import SocialMediaLinks from "../socialMediaLinks/socialMediaLinks";
 import shutdown from "./shutdown.svg";
-import LoadingOverlay, {
-    show as showLoadingScreen,
-    hide as hideLoadingScreen
-} from "../loadingOverlay/loadingOverlay";
+import LoadingOverlay from "../loadingOverlay/loadingOverlay";
+import TosOverlay from "../tosOverlay/tosOverlay";
 
 const Main = (props: MainProps) => {
     const {navigate} = props;
@@ -37,7 +41,7 @@ const Main = (props: MainProps) => {
 
     const begin = () => {
         // Fake loading screen to immerse the user
-        showLoadingScreen(<LoadingOverlay text="Ladataan vaalikonetta..." />);
+        showOverlay(<LoadingOverlay text="Ladataan vaalikonetta..." />);
         new Promise((resolve) => {
             setTimeout(function() {
                 resolve();
@@ -50,7 +54,7 @@ const Main = (props: MainProps) => {
                 );
             })
             .finally(() => {
-                hideLoadingScreen();
+                hideOverlay();
             });
     };
 
@@ -64,6 +68,10 @@ const Main = (props: MainProps) => {
                 {city}
             </p>
         ));
+
+    if (sessionStorage["accept_tos"] !== "true") {
+        showOverlay(<TosOverlay />);
+    }
 
     return (
         <div id="main-container">
@@ -92,7 +100,7 @@ const Main = (props: MainProps) => {
                                 {cities.map(city => <option key={city} value={city} />)}
                             </datalist>
                             <div id="pickfromlist">
-                                <b>Tai valitse listasta:</b>
+                                <b>Tai valitse seuraavista:</b>
                                 {generateQuickCities()}
                             </div>
                         </div>

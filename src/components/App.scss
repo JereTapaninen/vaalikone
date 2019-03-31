@@ -40,6 +40,38 @@ header {
     background-color: rgb(40, 145, 174);
 }
 
+.gray-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    font-size: 15px;
+    line-height: 1.13;
+    text-align: center;
+    color: #fff;
+    padding: 0 16px;
+    border: none;
+    background-color: rgb(150, 150, 150);
+    align-items: center;
+    cursor: pointer;
+
+    height: 45px;
+    width: 250px;
+    border-radius: 22px;
+
+    &:hover {
+        background-color: rgb(170, 170, 170);
+    }
+
+    &:active {
+        background-color: rgb(140, 140, 140);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
 .cyan-btn:focus {
     outline: none;
 }
