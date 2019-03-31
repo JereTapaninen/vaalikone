@@ -19,7 +19,10 @@ const Main = (props: MainProps) => {
 
     const filteredCities = removeDuplicates(cityNames).sort();
 
-    const [cities, setCities]: [string[], (arg: string[]) => void] = useState(filteredCities);
+    const [cities]: [string[], (arg: string[]) => void] = useState(filteredCities);
+    const [quickCities]: [string[], (arg: string[]) => void] = useState(
+        range(6).map(_ => cities[random(0, cities.length - 1)])
+    );
     const [currentCity, setCurrentCity]: [string, (arg: string) => void] = useState("");
 
     const onChange = (event: any) => {
@@ -31,17 +34,14 @@ const Main = (props: MainProps) => {
     };
 
     const generateQuickCities = (): JSX.Element[] => 
-        range(6).map(_ => {
-            const selectedCity = cities[random(0, cities.length - 1)];
-            return (
-                <p
-                    onClick={() => setCurrentCity(selectedCity)}
-                    className="fake-a"
-                >
-                    {selectedCity}
-                </p>
-            );
-        });
+        quickCities.map(city => (
+            <p
+                onClick={() => setCurrentCity(city)}
+                className="fake-a"
+            >
+                {city}
+            </p>
+        ));
 
     return (
         <div id="main-container">
@@ -57,7 +57,15 @@ const Main = (props: MainProps) => {
                     <div className="floating-box-main">
                         <div className="floating-box-main-container">
                             <h3 id="begin-subtitle">Aloita valitsemalla kuntasi</h3>
-                            <input onChange={onChange} value={currentCity} placeholder="Hae vaalipiiriä tai kuntaa" id="input-city" type="text" name="example" list="exampleList" />
+                            <input
+                                onChange={onChange}
+                                value={currentCity}
+                                placeholder="Hae kuntaa"
+                                id="input-city"
+                                type="text"
+                                name="example"
+                                list="exampleList"
+                            />
                             <datalist id="exampleList">
                                 {cities.map(city => <option key={city} value={city} />)}
                             </datalist>
