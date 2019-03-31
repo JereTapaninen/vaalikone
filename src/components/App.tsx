@@ -8,7 +8,7 @@ import ToS from "./tos/tos";
 import {Route, Switch, Redirect} from "react-router-dom";
 import { Helmet } from 'react-helmet';
 
-export default () => (
+export default (): JSX.Element => (
     <>
         <Switch>
             <Route exact path="/eduskunta2019" component={Main} />

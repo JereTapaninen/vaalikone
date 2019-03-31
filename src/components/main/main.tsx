@@ -20,23 +20,49 @@ import shutdown from "./shutdown.svg";
 import LoadingOverlay from "../loadingOverlay/loadingOverlay";
 import TosOverlay from "../tosOverlay/tosOverlay";
 
+const coordinateLeeway = 1.25;
+
 const Main = (props: MainProps) => {
     const {navigate} = props;
     // @ts-ignore
-    const cityNames: string[] = citiesJSON
-        .filter((cityInfo: {country: string}) => cityInfo.country === "FI")
-        .map((cityInfo: {name: string}) => cityInfo.name);
+    const filteredCities: object[] = citiesJSON
+        .filter((cityInfo: {country: string}) => cityInfo.country === "FI");
 
-    const filteredCities = removeDuplicates(cityNames).sort();
+    const getCityNames = (cities: object[]): string[] =>
+        removeDuplicates(cities.map((cityInfo: any) => cityInfo.name)).sort();
 
-    const [cities]: [string[], (arg: string[]) => void] = useState(filteredCities);
-    const [quickCities]: [string[], (arg: string[]) => void] = useState(
-        range(6).map(_ => cities[random(0, cities.length - 1)])
-    );
-    const [currentCity, setCurrentCity]: [string, (arg: string) => void] = useState("");
+    const [cities]: [string[], (arg: string[]) => void] =
+        useState(getCityNames(filteredCities));
+    const [quickCities, setQuickCities]: [string[], (arg: string[]) => void] =
+        useState(removeDuplicates(range(6).map(_ => cities[random(0, cities.length - 1)])));
+    const [currentCity, setCurrentCity]: [string, (arg: string) => void] =
+        useState("");
+
+    const cityIsNearbyToCoordinates = ({lat, lng}: any, {latitude, longitude}: any) =>
+        Number(lat) < Number(latitude) + coordinateLeeway &&
+        Number(lat) > Number(latitude) - coordinateLeeway &&
+        Number(lng) < Number(longitude) + coordinateLeeway &&
+        Number(lng) > Number(longitude) - coordinateLeeway;
 
     const onChange = (event: any) => {
         setCurrentCity(event.target.value);
+    };
+
+    const resetQuickCities = (coords: any) => {
+        const nearbyCities = getCityNames(
+            filteredCities.filter(city => cityIsNearbyToCoordinates(city, coords))
+        );
+        setQuickCities(
+            removeDuplicates(range(6).map(_ => nearbyCities[random(0, nearbyCities.length - 1)]))
+        );
+    };
+
+    const setQuickCitiesByLocation = () => {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition((position: any) => {
+                resetQuickCities(position.coords);
+            });
+        }
     };
 
     const begin = () => {
@@ -100,8 +126,17 @@ const Main = (props: MainProps) => {
                                 {cities.map(city => <option key={city} value={city} />)}
                             </datalist>
                             <div id="pickfromlist">
-                                <b>Tai valitse seuraavista:</b>
-                                {generateQuickCities()}
+                                <div>
+                                    <b>Tai valitse seuraavista:</b>
+                                    {generateQuickCities()}
+                                </div>
+                                <button
+                                    id="refresh-locations"
+                                    className="gray-btn"
+                                    onClick={setQuickCitiesByLocation}
+                                >
+                                    Päivitä sijaintisi mukaan
+                                </button>
                             </div>
                         </div>
                         <div id="submit-form">
