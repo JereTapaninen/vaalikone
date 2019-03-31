@@ -23,5 +23,30 @@
         "name": "Torille-Krister",
         "id": 4,
         "image": "torille.jpeg"
+    },
+    {
+        "name": "Pikachu",
+        "id": 5,
+        "image": "pikatsu.png"
+    },
+    {
+        "name": "Joulupukki",
+        "id": 6,
+        "image": "joulupukki.png"
+    },
+    {
+        "name": "Chuck Norris",
+        "id": 7,
+        "image": "norris.png"
+    },
+    {
+        "name": "Hemuli",
+        "id": 8,
+        "image": "hemuli.png"
+    },
+    {
+        "name": "Muumipeikko",
+        "id": 9,
+        "image": "muumipeikko.jpg"
     }
 ]
