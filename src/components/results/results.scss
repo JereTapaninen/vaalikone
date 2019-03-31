@@ -61,14 +61,13 @@ main#results-main {
 #results-floating-box > .floating-box-main > #inner-container {
     display: flex;
     align-items: center;
-    margin-top: -20px;
     margin-left: 20px;
     margin-right: 20px;
     color: white;
     font-weight: 700;
 
-    .party-info {
-        margin-top: 20px;
+    @media only screen and (min-width: 641px) {
+        height: 80px;
     }
 
     img {
@@ -82,8 +81,12 @@ main#results-main {
             text-align: center;
         }
 
-        &>div:not(:first-child) {
-            padding-bottom: 20px;
+        &>div {
+            padding-top: 20px;
+
+            &:last-child {
+                padding-bottom: 20px;
+            }
         }
     }
 }
