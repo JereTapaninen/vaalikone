@@ -71,6 +71,10 @@ main#results-main {
         margin-top: 20px;
     }
 
+    img {
+        border: 2px solid white;
+    }
+
     @media only screen and (max-width: 640px) {
         flex-direction: column;
 
