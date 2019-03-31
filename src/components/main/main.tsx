@@ -1,6 +1,6 @@
 // @ts-ignore
 import React, {useState} from "react";
-import "./main.css";
+import "./main.scss";
 // @ts-ignore
 import citiesJSON from "cities.json";
 // @ts-ignore
@@ -9,6 +9,7 @@ import {StartedState} from "../../common/constants";
 import {MainProps} from "../../common/types";
 import {push} from "connected-react-router";
 import {removeDuplicates, random, range} from "../../common/util";
+import SocialMediaLinks from "../socialMediaLinks/socialMediaLinks";
 
 const Main = (props: MainProps) => {
     const {navigate} = props;
@@ -38,6 +39,7 @@ const Main = (props: MainProps) => {
             <p
                 onClick={() => setCurrentCity(city)}
                 className="fake-a"
+                key={city}
             >
                 {city}
             </p>
@@ -82,6 +84,7 @@ const Main = (props: MainProps) => {
                         </div>
                     </div>
                 </div>
+                <SocialMediaLinks url={window.location.origin} />
             </main>
         </div>
     );

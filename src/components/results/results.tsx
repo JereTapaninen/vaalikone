@@ -13,6 +13,7 @@ import partiesJSON from "../../parties.json";
 // @ts-ignore
 import runnersJSON from "../../runners.json";
 import "./results.scss";
+import SocialMediaLinks from "../socialMediaLinks/socialMediaLinks";
 
 const Results = (props: ResultsProps & {match: any}) => {
     const {navigate} = props;
@@ -73,11 +74,7 @@ const Results = (props: ResultsProps & {match: any}) => {
                             <div id="answerSection">
                             </div>
                         </div>
-                        <div id="floating-box-buttons">
-                            <button id="share-btn" className="cyan-btn" onClick={() => {}}>
-                                <span>Jaa!</span>
-                            </button>
-                        </div>
+                        <SocialMediaLinks title='Jaa tuloksesi!' />
                     </div>
                 </main>
                 <footer id="results-footer">
