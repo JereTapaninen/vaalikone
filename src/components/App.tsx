@@ -4,6 +4,7 @@ import "./App.scss";
 import Main from "./main/main";
 import Vaalikone from "./vaalikone/vaalikone";
 import Results from "./results/results";
+import ToS from "./tos/tos";
 import {Route, Switch, Redirect} from "react-router-dom";
 import { Helmet } from 'react-helmet';
 
@@ -16,6 +17,7 @@ export default () => (
             <Route exact path="/eduskunta2019/suositukset/:ip" component={Results} />
             <Route exact path="/eduskunta2019/suositukset/:ip/:id" component={Results} />
             <Route exact path="/eduskunta2019/suositukset/:ip/:id/:party" component={Results} />
+            <Route exact path="/eduskunta2019/tos" component={ToS} />
             <Route path="/" render={() => <Redirect to="/eduskunta2019" />} />
         </Switch>
         <Helmet>

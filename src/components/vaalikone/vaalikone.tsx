@@ -1,13 +1,11 @@
 // @ts-ignore
 import React, {useState} from "react";
-import ReactDOM from "react-dom";
 import "./vaalikone.scss";
 // @ts-ignore
 import questionsJSON from "../../questions.json";
 // @ts-ignore
 import {connect} from "react-redux";
 import {StartedState} from "../../common/constants";
-import {actionSetStartedState} from "../../common/actions";
 import {
     VaalikoneDispatchProps,
     VaalikoneProps,
@@ -15,7 +13,15 @@ import {
 } from "../../common/types";
 import {push} from "connected-react-router";
 import {Redirect} from "react-router-dom";
-import {getLocationStateObject, hashAndSalt, encrypt, random, range} from "../../common/util";
+import {
+    getLocationStateObject,
+    hashAndSalt,
+    encrypt,
+    random,
+    range,
+    showOverlay,
+    hideOverlay
+} from "../../common/util";
 // @ts-ignore
 import publicIp from "public-ip";
 // @ts-ignore
@@ -23,10 +29,7 @@ import partiesJSON from "../../parties.json";
 // @ts-ignore
 import runnersJSON from "../../runners.json";
 import SocialMediaLinks from "../socialMediaLinks/socialMediaLinks";
-import LoadingOverlay, {
-    show as showLoadingScreen,
-    hide as hideLoadingScreen
-} from "../loadingOverlay/loadingOverlay";
+import LoadingOverlay from "../loadingOverlay/loadingOverlay";
 
 const Vaalikone = (props: VaalikoneProps) => {
     // @ts-ignore
@@ -49,7 +52,7 @@ const Vaalikone = (props: VaalikoneProps) => {
         const nextQuestionId = currentQuestionId + 1;
 
         if (nextQuestionId >= questions.length) {
-            showLoadingScreen(<LoadingOverlay text="Ladataan tuloksia..." />);
+            showOverlay(<LoadingOverlay text="Ladataan tuloksia..." />);
             publicIp.v4()
                 .then((publicIp: string) => {
                     const hashedPublicIp =
@@ -78,7 +81,7 @@ const Vaalikone = (props: VaalikoneProps) => {
                     );
                 })
                 .finally(() => {
-                    hideLoadingScreen();
+                    hideOverlay();
                 });
 
             return;
