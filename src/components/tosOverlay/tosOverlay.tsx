@@ -23,7 +23,7 @@ export default () => {
                 <div>
                     <p>
                         Jatkaaksesi sivulle sinun pitää hyväksyä Vaalikoneen käyttöehdot.<br />
-                        <b>Emme tallenna sinun tietojasi millekään palvelimelle, emmekä jaa sitä ulkopuolisille tahoille.</b>
+                        <b>Emme tallenna sinun tietojasi millekään palvelimelle, emmekä jaa niitä ulkopuolisille tahoille.</b>
                     </p>
                     <a href="/eduskunta2019/tos" target="_blank" rel="noopener noreferrer">
                         Lue loput käyttöehtomme.
